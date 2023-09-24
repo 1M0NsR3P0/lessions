@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testing...</title>
+    <style>
+        * {
+            cursor: none;
+        }
+
+        body {
+            background-color: black;
+            cursor: none;
+        }
+
+        .box {
+            height: 50px;
+            width: 35px;
+            border-radius: 50%;
+            background-color: rgb(252, 206, 206);
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(0, 255, 0, 0.5), 0 0 60px rgba(0, 0, 255, 0.5);
+            transform: skewY(95%);
+            transform: skewX(65%);
+            transform: rotateX(75deg);
+            transform-origin: bottom;
+            aspect-ratio: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+
+        </div>
+    </div>
+    <script>
+        const torch = document.querySelector(".box");
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            torch.style.left = x - 15 + "px"
+            torch.style.top = y - 15 + "px"
+        })
+
+    </script>
+</body>
+
+</html>
