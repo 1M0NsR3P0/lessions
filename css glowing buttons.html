@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>styled button</title>
+    <style>
+        *{box-sizing: border-box;margin: 0;padding: 0;}
+        body{
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            color: white;
+        }
+        .parent{
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        button{
+            height: 75px;
+            width: 150px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(0, 69, 92);
+            overflow: hidden;
+            position: relative;
+        }
+        button:hover{
+            background-color: rgb(0, 102, 135);
+            border-radius: 4px;
+            box-shadow: 0px 0px 23px 5px rgba(0, 253, 245, 0.955); 
+        }
+        button::before{
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(15deg, rgba(0, 253, 245, 0.955), rgba(0, 17, 255, 1) 100%, 0%, rgba(55, 255, 0, 1) 45%);
+            height: 1px;
+            width: 100%;
+            opacity: 0.7;
+            animation: up 0.4s ease-in-out infinite forwards;
+        }
+        button::after{
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(15deg, rgba(0, 253, 245, 0.955), rgba(0, 17, 255, 1) 100%, 0%, rgba(55, 255, 0, 1) 45%);
+            height: 1px;
+            width: 100%;
+            opacity: 0.7;
+            animation: down 0.4s ease-in-out infinite forwards;
+            
+        }
+        .left{
+            height: 75px;
+            width: 2px;
+            background: linear-gradient(15deg, rgba(0, 253, 245, 0.955), rgba(0, 17, 255, 1) 100%, 0%, rgba(55, 255, 0, 1) 45%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: left 0.4s ease-in-out  infinite forwards;
+            opacity: 0.7;
+        }
+        .right{
+            height: 75px;
+            width: 2px;
+            background: linear-gradient(15deg, rgba(0, 253, 245, 0.955), rgba(0, 17, 255, 1) 100%, 0%, rgba(55, 255, 0, 1) 45%);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            animation: left 0.4s ease-in-out  infinite forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes up {
+            0%{
+                transform: translateX(0px);
+            }
+            100%{
+                transform: translateX(150px);
+            }
+        }
+        @keyframes down {
+            0%{
+                transform: translateX(150px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+        }
+        @keyframes left {
+            0%{
+                transform: translateY(0px);
+                
+            }
+            100%{
+                transform: translateY(150px);
+            }
+        }
+        @keyframes right {
+            0%{
+                transform: translateY(150px);
+            }
+            100%{
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <button>
+            <span class="left">
+            </span>
+            <span class="right">
+            </span>
+            button
+        </button>
+        <button>
+            <span class="left">
+            </span>
+            <span class="right">
+            </span>
+            button
+        </button>
+        <button>
+            <span class="left">
+            </span>
+            <span class="right">
+            </span>
+            button
+        </button>
+        <button>
+            <span class="left">
+            </span>
+            <span class="right">
+            </span>
+            button
+        </button>
+    </div>
+</body>
+
+</html>
