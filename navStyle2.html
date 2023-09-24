@@ -52,7 +52,6 @@
             align-items: center;
             display: flex;
             transition: 0.3s;
-            position: relative;
         }
 
         .container a:hover {
@@ -62,7 +61,7 @@
             padding: 10px 25px;
         }
         span{
-            width: 0px;
+            display: none;
             height: 60px;
             position: absolute;
             top: 0.9rem;
@@ -70,28 +69,28 @@
             transition: 0.2s;
             border-radius: 10px;
             opacity: 0.8;
-            display: none;
+            background: linear-gradient(15deg, rgba(116, 35, 255, 0.955) 0%, rgb(20, 204, 255) 100%);
         }
 
         .container a:nth-child(1):hover~span{
+            left: 0px;
+            width: 130px;
             display: block;
-            width: 100px;
-            background: linear-gradient(15deg, rgba(0,141,131,0.954919638753939) 0%, rgba(107,255,0,1) 100%);
         }
         .container a:nth-child(2):hover~span{
+            left:120px;
+            width: 110px;
             display: block;
-            width:220px;
-            background: linear-gradient(15deg, rgba(35, 255, 105, 0.955) 0%, rgb(81, 61, 255) 100%);
         }
         .container a:nth-child(3):hover~span{
+            left: 225px;
+            width: 150px;
             display: block;
-            width: 370px;
-            background: linear-gradient(15deg, rgba(116, 35, 255, 0.955) 0%, rgb(20, 204, 255) 100%);
         }
         .container a:nth-child(4):hover~span{
+            left: 374px;
+            width: 100px;
             display: block;
-            width: 480px;
-            background: linear-gradient(15deg, rgba(14, 243, 224, 0.955) 0%, rgb(25, 71, 34) 100%);
         }
     </style>
 </head>
