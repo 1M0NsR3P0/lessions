@@ -1,0 +1,32 @@
+the first bug happend now! 09/26/2023 5:42 (now)
+1. I have set a toggle button, when i click it this will change the src attribute of the button svg
+2. Everything was okay! i asked chatGPT to see what's wrong. But it was not a coding error!
+no erorr shows in the console.
+3. Then I just did some debugging my own but still the problem happens
+4. Ohh! The problem was when i click on the card button the src was not changing for the first time, after the
+second time i click it works just fine.
+5. Then I console Out at every line to see which line is being ignored. The browser debbuger cannot shows the bug  because it seems like Everything is okay!
+6. Then i noticed that the console say the value of the toggle is false for first click, and then on second click
+it toggle to true and the src changes.
+7. The problem was setting the initial toggle value is false. I just ignored it because, it doesn't matter when you
+use toggle, the toggle fucntion just make it the oposite of it's initial value. so whether it is false of true the 
+the toggle funciton make it toggle.
+8. My thinking of that ignored value was wrong. that is what i realized.
+for details see the part of the toggle funciton 
+
+// this is the toggle fucntion
+const buttonToggle = document.querySelectorAll(".btn[cardButton]");
+        buttonToggle.forEach((button, i) => {
+            const src = document.querySelectorAll(".btn[cardButton] img");
+            let toggle = true 
+            // first i did the initial value to false. that why the bug happened. interesting. isn't it?
+            button.addEventListener('click', () => {
+                console.log(toggle)
+                toggle = !toggle;
+                if (toggle) {
+                    src[i].setAttribute('src', "./add-to-cart-icon.svg")
+                } else {
+                    src[i].setAttribute('src', "./shopping-bag-checkmark-icon.svg")
+                }
+            })
+        })

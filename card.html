@@ -10,60 +10,65 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            color: black;
+            color: rgb(212, 205, 205);
             font-family: 'Courier New', Courier, monospace;
         }
 
         body {
-            background: linear-gradient(15deg, rgba(218, 108, 237, 0.954919638753939) 0%, rgba(115, 8, 123, 0.9689252409948355) 100%);
+            background: rgb(83, 0, 132);
             background-repeat: no-repeat;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* padding: 20px 0; */
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
         }
 
         .card {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2%;
         }
 
         .container {
             height: 500px;
-            /*make it as needed*/
             width: 350px;
             border: none;
             border-radius: 10px;
-            padding: 8px;
+            padding: 0 5px;
             font-size: 0.9rem;
             border: 1px solid rgb(212, 207, 207);
             backdrop-filter: blur(50px);
             background-color: rgba(255, 255, 255, 0.091);
+            position: relative;
+            overflow: hidden;
         }
 
         .container:hover {
-            box-shadow: 0px 0px 3px 3px rgb(212, 207, 207);
+            box-shadow: 0px 0px 3px 3px rgb(255, 255, 255);
             transition: 0.3s;
+            background: linear-gradient(15deg, rgba(150, 15, 174, 0.955) 0%, rgba(224, 86, 234, 0.969) 100%);
         }
+
 
         .container .box {
-            position: relative;
             height: 100%;
             width: 100%;
-            padding-top: 15px;
-            /* cursor: none; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        
 
         .box .heading {
             display: grid;
             place-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 5px;
+            width: 100%;
+            overflow-y: hidden;
+            user-select: none;
         }
 
         .img-container {
@@ -85,8 +90,11 @@
         }
 
         .box .details {
-            display: grid;
+            display: flex;
             place-content: center;
+            user-select: none;
+            width: 100%;
+            text-align: center;
         }
 
         .box .btn {
@@ -95,25 +103,36 @@
         }
 
         .btn>button {
-            background-color: rgb(13, 125, 217);
+            background-color: rgb(131, 0, 219);
             border: none;
+            border-radius: 12px;
             cursor: pointer;
-            border-radius: 5px;
             color: white;
-            font-size: 1.3rem;
-            padding: 4px;
-            height: 45px;
-            width: 80px;
+            font-size: 0.8rem;
+            padding: 5px 7px;
+            height: 35px;
+            width: 75px;
             position: absolute;
             bottom: 0;
             right: 0;
             overflow: hidden;
             z-index: 15;
+            margin: 10px;
+        }
+
+        .btn[cardBUtton]>button {
+            left: 0;
+            height: 2rem;
+            width: 3rem;
+        }
+
+        .btn[cardBUtton] img {
+            height: 24px;
+            width: 24px;
         }
 
         .btn>button:hover {
-            box-shadow: 0px 0px 3px 3px rgb(212, 207, 207);
-            background-color: rgb(17, 134, 230);
+            background-color: rgba(152, 17, 230, 0.856);
             transition: 0.5s;
         }
 
@@ -124,14 +143,16 @@
             left: 0px;
             height: 0px;
             width: 0px;
-            background: linear-gradient(15deg, rgba(218, 108, 237, 0.954919638753939) 0%, rgba(115, 8, 123, 0.9689252409948355) 100%);
+            background: linear-gradient(15deg, rgba(180, 23, 208, 0.955) 0%, rgba(246, 124, 255, 0.969) 100%);
             animation: buttonUp 0.4s ease 1 forwards;
             border-top-right-radius: 70%;
             border-top-left-radius: 3%;
         }
 
         .btn>button:active {
-            background-color: rgb(0, 103, 188);
+            transition: 0.5s;
+            box-shadow: 0px 0px 3px 3px rgb(210, 143, 255);
+            background-color: rgb(106, 0, 255);
         }
 
         .btn>button:active #span {
@@ -146,20 +167,31 @@
         }
 
         .torch {
-            height: 65px;
-            width: 65px;
-            background: linear-gradient(15deg, rgb(2, 255, 32) 0%, rgb(62, 155, 255) 0%, rgba(76, 255, 213, 0.969) 100%);
-            border-radius: 35px;
+            height: 1px;
+            width: 1px;
+            border-radius: 50%;
             display: none;
             position: absolute;
             left: 0%;
             top: 0%;
-            z-index: 5;
-            mix-blend-mode: difference;
+            z-index: -5;
+            background: linear-gradient(15deg, rgba(143, 255, 178, 0.912), transparent);
+            box-shadow: 0px 0px 1400px 170px rgb(53, 255, 97);
+            transition: 0.2s;
         }
-        .container:active .torch {
-            /* z-index: 10; */
-            display: block;
+
+        select {
+            background-color: rgba(255, 0, 255, 0.096);
+            border-radius: 10px;
+            padding: 2px 1px;
+            border: none;
+            font-weight: bold;
+            outline: none;
+        }
+
+        select:focus {
+            color: white;
+            border: none;
         }
 
         @keyframes buttonUp {
@@ -182,99 +214,241 @@
     <div class="card">
         <div class="container"> <span class="torch"></span>
             <div class="box">
-                <div class="heading">
-                    <h1>My Card heading</h1>
-                </div>
-                <div class="img-container"><img src="./img/shoe1.jpg" alt=""></div>
-                <div class="details">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum
-                        molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasi repellendus neque
-                        at
-                        recusandae incidunt magni maiores.</p>
+                <div class="img-container"><img src="./img/shoe1.jpg" alt="product pic loading"></div>
+                <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                    <div class="heading">
+                        <h1>My Card heading</h1>
+                    </div>
+                    <div class="details">
+                        <p class="details"><span>Descripton: </span>
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">price: 0.15$</span>
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">Ratings: 5.9/10</span>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">
+                            <label for="colors">Colors:</label>
+                            <select name="select" id="colors">
+                                <option value="Red">Red</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
                 <div class="btn">
-                    <button><span class="span">click</span> <span id="span"></span></button>
+                    <button><span class="span">Buy Now</span> <span id="span"></span></button>
+                </div>
+                <div class="btn" cardButton>
+                    <button><span class="span"><img src="./add-to-cart-icon.svg" alt=""></span> <span
+                            id="span"></span></button>
                 </div>
             </div>
         </div>
         <div class="container"> <span class="torch"></span>
             <div class="box">
-                <div class="heading">
-                    <h1>My Card heading</h1>
-                </div>
-                <div class="img-container"><img src="./img/shoe2.jpg" alt=""></div>
-                <div class="details">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum
-                        molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasi repellendus neque
-                        at
-                        recusandae incidunt magni maiores.</p>
+                <div class="img-container"><img src="./img/shoe2.jpg" alt="product pic loading"></div>
+                <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                    <div class="heading">
+                        <h1>My Card heading</h1>
+                    </div>
+                    <div class="details">
+                        <p class="details"><span>Descripton: </span>
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">price: 0.15$</span>
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">Ratings: 5.9/10</span>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">
+                            <label for="colors">Colors:</label>
+                            <select name="select" id="colors">
+                                <option value="Red">Red</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
                 <div class="btn">
-                    <button><span class="span">click</span> <span id="span"></span></button>
+                    <button><span class="span">Buy Now</span> <span id="span"></span></button>
+                </div>
+                <div class="btn" cardButton>
+                    <button><span class="span"><img src="./add-to-cart-icon.svg" alt=""></span> <span
+                            id="span"></span></button>
                 </div>
             </div>
         </div>
         <div class="container"> <span class="torch"></span>
             <div class="box">
-                <div class="heading">
-                    <h1>My Card heading</h1>
-                </div>
-                <div class="img-container"><img src="./img/shoe3.jpg" alt=""></div>
-                <div class="details">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum
-                        molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasi repellendus neque
-                        at
-                        recusandae incidunt magni maiores.</p>
+                <div class="img-container"><img src="./img/shoe3.jpg" alt="product pic loading"></div>
+                <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                    <div class="heading">
+                        <h1>My Card heading</h1>
+                    </div>
+                    <div class="details">
+                        <p class="details"><span>Descripton: </span>
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">price: 0.15$</span>
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">Ratings: 5.9/10</span>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">
+                            <label for="colors">Colors:</label>
+                            <select name="select" id="colors">
+                                <option value="Red">Red</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
                 <div class="btn">
-                    <button><span class="span">click</span> <span id="span"></span></button>
+                    <button><span class="span">Buy Now</span> <span id="span"></span></button>
+                </div>
+                <div class="btn" cardButton>
+                    <button><span class="span"><img src="./add-to-cart-icon.svg" alt=""></span> <span
+                            id="span"></span></button>
                 </div>
             </div>
         </div>
         <div class="container"> <span class="torch"></span>
             <div class="box">
-                <div class="heading">
-                    <h1>My Card heading</h1>
-                </div>
-                <div class="img-container"><img src="./img/shoe4.jpg" alt=""></div>
-                <div class="details">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum
-                        molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasi repellendus neque
-                        at
-                        recusandae incidunt magni maiores.</p>
+                <div class="img-container"><img src="./img/shoe4.jpg" alt="product pic loading"></div>
+                <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                    <div class="heading">
+                        <h1>My Card heading</h1>
+                    </div>
+                    <div class="details">
+                        <p class="details"><span>Descripton: </span>
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">price: 0.15$</span>
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">Ratings: 5.9/10</span>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">
+                            <label for="colors">Colors:</label>
+                            <select name="select" id="colors">
+                                <option value="Red">Red</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
                 <div class="btn">
-                    <button><span class="span">click</span> <span id="span"></span></button>
+                    <button><span class="span">Buy Now</span> <span id="span"></span></button>
+                </div>
+                <div class="btn" cardButton>
+                    <button><span class="span"><img src="./add-to-cart-icon.svg" alt=""></span> <span
+                            id="span"></span></button>
                 </div>
             </div>
         </div>
         <div class="container"> <span class="torch"></span>
             <div class="box">
-                <div class="heading">
-                    <h1>My Card heading</h1>
-                </div>
-                <div class="img-container"><img src="./img/shoe5.jpg" alt=""></div>
-                <div class="details">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum
-                        molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasi repellendus neque
-                        at
-                        recusandae incidunt magni maiores.</p>
+                <div class="img-container"><img src="./img/shoe5.jpg" alt="product pic loading"></div>
+                <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                    <div class="heading">
+                        <h1>My Card heading</h1>
+                    </div>
+                    <div class="details">
+                        <p class="details"><span>Descripton: </span>
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">price: 0.15$</span>
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">Ratings: 5.9/10</span>
+                    </div>
+                    <div style="margin-top: 5px; display: flex; justify-content: space-evenly;">
+                        <span style="font-weight: 700; font-size: larger; user-select: none;">
+                            <label for="colors">Colors:</label>
+                            <select name="select" id="colors">
+                                <option value="Red">Red</option>
+                                <option value="Green">Green</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </span>
+                    </div>
                 </div>
                 <div class="btn">
-                    <button><span class="span">click</span> <span id="span"></span></button>
+                    <button><span class="span">Buy Now</span> <span id="span"></span></button>
+                </div>
+                <div class="btn" cardButton>
+                    <button><span class="span"><img src="./add-to-cart-icon.svg" alt=""></span> <span
+                            id="span"></span></button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- let's create an oposite site of the card -->
+    <div>
+
+    </div>
 
     <script>
-        const torch = document.querySelector(".torch");
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            torch.style.left = x - 30 + "px"
-            torch.style.top = y - 30 + "px"
+        // the details slicer
+        let text = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam cumque molestiae voluptatum molestias eaque id ducimus optio, saepe sequi culpa, consequatur tempore quasirepellendusneque at recusandae incidunt magni maiores.`
+        const torches = document.querySelectorAll(".torch");
+        const containers = document.querySelectorAll(".container");
+        const details = document.querySelectorAll('.details');
+        details.forEach((detail) => {
+            detail.textContent = "Description:   " + text.slice(0, 50) + "..." || null;
         })
+
+        // the 
+        containers.forEach((container, index) => {
+            const torch = torches[index];
+            container.addEventListener('mouseenter', () => {
+                torch.style.display = "block";
+                container.addEventListener('mousedown', () => {
+                    document.body.style.cursor = "none";
+                });
+            });
+            container.addEventListener('mousemove', (e) => {
+                const x = e.clientX - container.getBoundingClientRect().left;
+                const y = e.clientY - container.getBoundingClientRect().top;
+                torch.style.left = x + "px";
+                torch.style.top = y + "px";
+            });
+            container.addEventListener('mouseleave', () => {
+                torch.style.display = "none";
+                container.addEventListener('mouseup', () => {
+                    document.body.style.cursor = "auto";
+                    container.removeEventListener('mousemove', null);
+                    container.removeEventListener('mouseup', null);
+                });
+            });
+        });
+        // card button toggling code...
+
+        const buttonToggle = document.querySelectorAll(".btn[cardButton]");
+        buttonToggle.forEach((button, i) => {
+            const src = document.querySelectorAll(".btn[cardButton] img");
+            let toggle = true
+            button.addEventListener('click', () => {
+                console.log(toggle)
+                toggle = !toggle;
+                if (toggle) {
+                    src[i].setAttribute('src', "./add-to-cart-icon.svg")
+                } else {
+                    src[i].setAttribute('src', "./shopping-bag-checkmark-icon.svg")
+                }
+            })
+        })
+
     </script>
 </body>
 
