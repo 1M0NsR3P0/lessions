@@ -10,11 +10,11 @@
             box-sizing: border-box;
             padding: 0;
             margin: 0;
-            color: black;
+            color: rgb(24, 0, 80);
         }
 
         body {
-            background: linear-gradient(15deg, rgba(227, 243, 251, 0.954919638753939) 0%, rgba(167, 253, 253, 0.9689252409948355) 100%);
+            background: linear-gradient(15deg, rgba(94, 59, 248, 0.955) 0%, rgba(167, 174, 253, 0.969) 100%);
             background-repeat: no-repeat;
             height: 100vh;
             width: 100vw;
@@ -96,7 +96,7 @@
 
         input {
             width: 100%;
-            height: 35px;
+            height: 30px;
             outline: none;
             border: none;
             border-radius: 15px;
@@ -173,6 +173,7 @@
 </head>
 
 <body>
+
     <form onsubmit="handleLogin()">
         <div class="login-page">
             <div class="form">
@@ -203,6 +204,16 @@
                 </div>
                 <div class="input-containers">
                     <div style="display: flex; gap:5px;">
+                        <input id="Name" type="text" placeholder="Enter Name">
+                    </div><br>
+                    <div style="display: flex; gap:5px;">
+                        <input id="age" type="number" placeholder="Age">
+                    </div><br>
+                    <div style="display: flex; gap:5px; align-items: center; justify-content: start;">
+                        <input id="age" type="radio" name="gender"> Male
+                        <input id="age" type="radio" name="gender"> FeMale
+                    </div><br>
+                    <div style="display: flex; gap:5px;">
                         <input id="userName" type="text" placeholder="Enter User Name">
                     </div><br>
                     <div style="display: flex; gap:5px;">
@@ -218,10 +229,12 @@
     <script>
         // animating the card on click
         document.querySelector(".RegButton a").addEventListener("click",()=>{
+            document.querySelector("form").reset()
             document.querySelector(".login-page2").classList.add("rotateRight")
             document.querySelector(".login-page").classList.remove("rotateLeft")
         })
         document.querySelector(".loginButton a").addEventListener("click",()=>{
+            document.querySelector("form").reset()
             document.querySelector(".login-page2").classList.remove("rotateRight")
             document.querySelector(".login-page").classList.add("rotateLeft")
         })
