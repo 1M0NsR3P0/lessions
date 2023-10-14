@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise</title>
+    <link rel="stylesheet" href="./propsal.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>  -->
+</head>
+<body>
+
+    <div class="containers">
+        <h3 class="header">Click This Button To Get The Surprise!!</h3>
+        <button id="clickMeBtn">
+            <span class="left">
+            </span>
+            <span class="right">
+            </span>
+            Click Me
+        </button>
+    </div>
+    <div class="proposal" id="proposal">
+        <div class="card">
+            <div class="container"> <span class="torch"></span>
+                <div class="box">
+                    <div class="img-container"><img src="./img/ring.png" alt="product pic loading"></div>
+                    <div style="display: flex;flex-direction: column;gap:10px 0 ;">
+                        <div class="heading">
+                            <h1 style="color: rgb(131, 36, 255);">Will You Marry Me?????</h1>
+                        </div>
+                    </div>
+                    <div class="btn" id="yes">
+                        <button><span class="span">Say YES!🥳</span> <span id="span"></span></button>
+                    </div>
+                    <div class="noBTN" id="noBTN">
+                        <span id="noBUtton"><span class="span">NO!!🙏</span> <span id="span"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popUp1" id="popUp1">
+        <div style="display: flex; justify-content: center;align-items: center;height: 100%; flex-direction: column;">
+            <h1 style="color: white;">SoRrY ByE! Have A GREAT Time</h1>
+            <img src="./img/output-onlinegiftools.gif" alt="">
+        </div>
+    </div>
+
+    <!-- latest script here -->
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script type="module" src="./propose.js"></script>
+</body>
+</html>
